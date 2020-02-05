@@ -1,16 +1,5 @@
 <?php
 
-// ファイルの読み込み
-require_once('dbconnect.php');
-require_once('function.php');
-
-//DBからデータを取得
-$stmt = $dbh->prepare('SELECT * FROM tasks');
-$stmt->execute();
-
-// 実行結果を変数に代入
-$tasks = $stmt->fetchAll();
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -46,26 +35,24 @@ $tasks = $stmt->fetchAll();
         </div>
 
         <div class="row p-3">
-            <?php foreach ($tasks as $task) : ?>
-                <div class="col-sm-6 col-md-4 col-lg-3 py-3 py-3">
-                    <div class="card">
-                        <img src="https://picsum.photos/200" class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <h5 class="card-title"><?= h($task["title"]); ?></h5>
-                            <p class="card-text">
-                                <?= h($task["contents"]); ?>
-                            </p>
-                            <div class="text-right d-flex justify-content-end">
-                                <a href="edit.php?id=<?= h($task['id']); ?>" class="btn text-success">EDIT</a>
-                                <form action="delete.php" method="post">
-                                    <input type="hidden" name="id" value="<?= h($task['id']); ?>">
-                                    <button type="submit" class="btn text-danger">DELETE</button>
-                                </form>
-                            </div>
+            <div class="col-sm-6 col-md-4 col-lg-3 py-3 py-3">
+                <div class="card">
+                    <img src="https://picsum.photos/200" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">ここにタイトル</h5>
+                        <p class="card-text">
+                            ここに詳細
+                        </p>
+                        <div class="text-right d-flex justify-content-end">
+                            <a href="edit.php" class="btn text-success">EDIT</a>
+                            <form action="delete.php" method="post">
+                                <input type="hidden" name="id">
+                                <button type="submit" class="btn text-danger">DELETE</button>
+                            </form>
                         </div>
                     </div>
                 </div>
-            <?php endforeach; ?>
+            </div>
         </div>
     </div>
 
