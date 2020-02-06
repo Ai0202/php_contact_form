@@ -1,11 +1,11 @@
 <?php
 
 //DBに接続
-$host = "db";
+$host = "localhost";
 $dbname = "todo";
 $charset = "utf8mb4";
 $user = 'root';
-$password = 'secret';
+$password = '';
 $options = [
     PDO::ATTR_ERRMODE            => PDO::ERRMODE_EXCEPTION,
     PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
