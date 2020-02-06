@@ -3,6 +3,8 @@ require_once('function.php');
 require_once('dbconnect.php');
 
 $nickname = '';
+// $_GET['nickname']が存在していたら
+// 検索ボタンが押されていたら
 if (isset($_GET['nickname'])) {
     $nickname = $_GET['nickname'];
 }
