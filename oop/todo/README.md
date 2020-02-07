@@ -20,21 +20,25 @@
   - サインイン機能
   - サインアウト機能
 
+### ERD
+![ERD](./oop_todo.jpeg)
+
 ### テーブル定義
 ### テーブル名: tasks
 | 列名        | データ型    | NOT NULL | デフォルト | 備考                 |
 | ----------- | ----------- | -------- | ---------- | -------------------- |
 | id          | INT         | YES      |            | PK                   |
-| title       | varchar(30) | YES      |            | タスクの題名が入る   |
-| contents    | varchar(30) | NO       |            | タスクの詳細が入る   |
+| title       | VARCHAR(30) | YES      |            | タスクの題名が入る   |
+| contents    | VARCHAR(30) | NO       |            | タスクの詳細が入る   |
+| user_id     | INT         | NO       |            | ユーザーのIDが入る   |
 | created_at  | TIMESTAMP   | NO       |            | タスクの登録日       |
 
 ### テーブル名: users
 | 列名        | データ型    | NOT NULL | デフォルト | 備考                 |
 | ----------- | ----------- | -------- | ---------- | -------------------- |
 | id          | INT         | YES      |            | PK                   |
-| email       | varchar(30) | NO       |            |                      |
-| password    | varchar(90) | NO       |            |                      |
+| email       | VARCHAR(90) | NO       |            |                      |
+| password    | TEXT        | NO       |            |                      |
 | created_at  | TIMESTAMP   | NO       |            | アカウントの登録日   |
 
 

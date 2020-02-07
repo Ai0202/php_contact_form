@@ -30,7 +30,8 @@ CREATE TABLE IF NOT EXISTS `tasks` (
   `id` int(11) NOT NULL,
   `title` varchar(20) NOT NULL,
   `contents` text NOT NULL,
-  `created` datetime NOT NULL
+  `user_id` int,
+  `created` datetime,
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
 --
