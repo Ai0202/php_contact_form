@@ -2,7 +2,7 @@
 
 session_start();
 
-$user = $_SESSION['user'];
+$user = $_SESSION['user'] ?? [];
 
 // ファイルの読み込み
 require_once('Models/Task.php');
