@@ -6,7 +6,6 @@ class Task extends Model
 {
     // プロパティ
     protected $table = 'tasks';
-    protected $db_manager;
 
     // インスタンス化した時に呼ばれるメソッド
     public function __construct()
