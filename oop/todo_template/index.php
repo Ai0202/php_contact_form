@@ -1,4 +1,48 @@
 <?php
+// タスクの一覧表示機能
+/**
+ * ①データ(タスク)の取得
+ *   - DBの接続
+ *   - SQL(データベースを操作する言語)の実行
+ *      - Read(SELECT)
+ *   - 結果を変数に代入する
+ *  
+ * ②①で取得したデータを画面に表示する
+ * 
+ * 
+ * 
+ */
+
+//  検索した文字を受け取る
+//   1. DBからデータを取得する
+//     1. DBの接続する
+//     2. SQLを実行する
+//       - データを取得するSQL
+//         - タイトルに検索した文字を含む
+//   2. 取得したデータを画面に表示する
+
+
+
+//  ファイルの読み込み
+require_once('Models/Task.php');
+
+/** 
+ * getAllを使いたい
+ * getAllはTaskクラスのメソッド
+ * メソッドを使う場合はクラスをインスタンス化しないといけない
+ * */
+
+// Taskクラスをインスタンス化して、$todoにインスタンスを代入
+// echo '<pre>';
+$todo = new Task();
+// var_dump($todo);die;
+
+$tasks = $todo->getAll();
+$title = $_GET['title'];
+// var_dump($title);die;
+$tasks = $todo->findByTitle(["%$title%"]);
+// echo '<pre>';
+// var_dump($tasks);die;
 
 ?>
 <!DOCTYPE html>
@@ -28,12 +72,12 @@
                             <a class="nav-link text-light" href="create.php">Create</a>
                         </li>
                         <li class="nav-item">
-                                <a class="nav-link text-light" href="signinform.php">サインイン</a>
-                                <a class="nav-link text-light" href="signout.php">サインアウト</a>
+                            <a class="nav-link text-light" href="signinform.php">サインイン</a>
+                            <a class="nav-link text-light" href="signout.php">サインアウト</a>
                         </li>
                         <li class="nav-item">
                             <form class="form-inline">
-                                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="title">
                                 <button class="btn btn-outline-light my-2 my-sm-0" type="submit">Search</button>
                             </form>
                         </li>
@@ -44,24 +88,26 @@
         </div>
 
         <div class="row p-3">
-            <div class="col-sm-6 col-md-4 col-lg-3 py-3 py-3">
-                <div class="card">
-                    <img src="https://picsum.photos/200" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title">ここにタイトル</h5>
-                        <p class="card-text">
-                            ここに詳細
-                        </p>
-                        <div class="text-right d-flex justify-content-end">
-                            <a href="edit.php" class="btn text-success">EDIT</a>
-                            <form action="delete.php" method="post">
-                                <input type="hidden" name="id" value="">
-                                <button type="submit" class="btn text-danger">DELETE</button>
-                            </form>
+            <?php foreach ($tasks as $task) : ?>
+                <div class="col-sm-6 col-md-4 col-lg-3 py-3 py-3">
+                    <div class="card">
+                        <img src="https://picsum.photos/200" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title"><?= $task['title']; ?></h5>
+                            <p class="card-text">
+                                <?= $task['contents']; ?>
+                            </p>
+                            <div class="text-right d-flex justify-content-end">
+                                <a href="edit.php" class="btn text-success">EDIT</a>
+                                <form action="delete.php" method="post">
+                                    <input type="hidden" name="id" value="">
+                                    <button type="submit" class="btn text-danger">DELETE</button>
+                                </form>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
+            <?php endforeach; ?>
         </div>
     </div>
 
