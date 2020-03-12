@@ -17,20 +17,6 @@ class Model
         $this->db_manager->connect();
     }
 
-    public function create($data)
-    {
-        // DBに保存
-        // このクラスのインスタンスの
-        // db_managerプロパティの
-        // DbManagerクラスのインスタンス
-        // dbhプロパティの
-        // PDOのインスタンス
-        // prepareメソッドを実行
-        // INSERT INTO (カラム名, ,) VALUES (値, 値, 値,)
-        $stmt = $this->db_manager->dbh->prepare('INSERT INTO ' . $this->table . ' (title, contents, created) VALUES (?, ?, ?)');
-        $stmt->execute($data);
-    }
-
     // DBからデータを全て取得するメソッド
     public function getAll()
     {
@@ -60,7 +46,7 @@ class Model
         return $tasks;
     }
 
-    public function get($id)
+    public function findById($id)
     {
         // $idと一致するidをもつレコードを取得する
 

@@ -9,7 +9,13 @@ require_once('Models/Task.php');
 require_once('function.php');
 
 $task = new Task();
-$tasks = $task->getAll();
+
+if (isset($_GET['title'])) {
+    $title = $_GET['title'];
+    $tasks = $todo->findByTitle(["%$title%"]);
+} else {
+    $tasks = $task->getAll();
+}
 
 ?>
 <!DOCTYPE html>

@@ -7,7 +7,7 @@
     $id = $_GET['id'];
 
     // DBへのデータ保存
-    $task = (new Task())->get($id);
+    $task = (new Task())->findById($id);
 
 ?>
 <!DOCTYPE html>

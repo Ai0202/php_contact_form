@@ -10,6 +10,7 @@
 </head>
 
 <body>
+    <h1>サインアップ</h1>
     <div class="container-fulid">
         <div class="row">
             <div class="col-12">

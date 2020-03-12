@@ -27,4 +27,13 @@ class Task extends Model
         $stmt = $this->db_manager->dbh->prepare('UPDATE ' . $this->table . ' SET title = ?, contents = ? WHERE id = ?');
         $stmt->execute($data);
     }
+
+    // タイトルを元に検索する
+    public function findByTitle($data)
+    {
+        $stmt = $this->db_manager->dbh->prepare('SELECT * FROM ' . $this->table . ' WHERE title LIKE ?');
+        $stmt->execute($data);
+        $tasks = $stmt->fetchAll();
+        return $tasks;
+    }
 }
