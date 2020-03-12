@@ -46,6 +46,15 @@ class Model
         return $tasks;
     }
 
-    
+    public function delete($data)
+    {
+        // 削除処理
+
+        // 準備
+        $stmt = $this->db_manager->dbh->prepare('DELETE FROM ' . $this->table . ' WHERE id = ?');
+
+        // 実行
+        return $stmt->execute($data);
+    }
 
 }
