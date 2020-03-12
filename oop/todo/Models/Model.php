@@ -77,13 +77,6 @@ class Model
         return $task;
     }
 
-    public function update($data)
-    {
-        // データの更新
-        $stmt = $this->db_manager->dbh->prepare('UPDATE ' . $this->table . ' SET title = ?, contents = ? WHERE id = ?');
-        $stmt->execute($data);
-    }
-
     public function delete($data)
     {
         // 削除処理
